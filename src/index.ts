@@ -1,3 +1,16 @@
+import XMLHttpNodeRequest, { XMLHttpNodeRequestEventTarget, XMLHttpNodeRequestUpload, ProgressEvent, checkXMLHttpSupport } from "./utils/XMLHttpNodeRequest";
+
+if (!checkXMLHttpSupport()) {
+    //@ts-ignore
+    global.ProgressEvent = ProgressEvent;
+    //@ts-ignore
+    global.XMLHttpRequestEventTarget = XMLHttpNodeRequestEventTarget;
+    //@ts-ignore
+    global.XMLHttpRequestUpload = XMLHttpNodeRequestUpload;
+    //@ts-ignore
+    global.XMLHttpRequest = XMLHttpNodeRequest;
+}
+
 import HavenoClient from "./HavenoClient";
 import HavenoError from "./types/HavenoError";
 import HavenoUtils from "./utils/HavenoUtils";
